@@ -1,0 +1,189 @@
+---
+declare global {
+  interface Window {
+    dataLayer: Record<string, any>[];
+  }
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, viewport-fit=cover"
+    />
+
+    <meta
+      name="description"
+      content="I am Jaroslav Hrách. A frontend developer and a music journalist based in Prague, Czech Republic."
+    />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Jaroslav Hrách - Frontend Developer and Music Journalist</title>
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Jaroslav Hrách - Frontend Developer and Music Journalist"
+    />
+    <meta
+      property="og:description"
+      content="I am Jaroslav Hrách. A frontend developer and a music journalist based in Prague, Czech Republic."
+    />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:url" content="https://jaroslavhrach.cz/" />
+    <meta property="og:site_name" content="Jaroslav Hrách" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@izmy666" />
+    <meta
+      name="twitter:title"
+      content="Jaroslav Hrách - Frontend Developer and Music Journalist"
+    />
+    <meta
+      name="twitter:description"
+      content="I am Jaroslav Hrách. A frontend developer and a music journalist based in Prague, Czech Republic."
+    />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "email": "mailto:me@jaroslavhrach.cz",
+        "image": "/profile-photo.jpg",
+        "jobTitle": "Frontend Developer",
+        "name": "Jaroslav Hrách",
+        "gender": "Male",
+        "url": "https://jaroslavhrach.cz",
+        "sameAs": [
+          "https://www.linkedin.com/in/jaroslav-hrach",
+          "https://github.com/izmy",
+          "https://www.facebook.com/jaroslavhrach",
+          "https://www.instagram.com/izmy666",
+          "https://twitter.com/izmy666"
+        ]
+      }
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R17RPMJTV"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(..._args: unknown[]) {
+        window.dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-8R17RPMJTV");
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<script>
+  console.log(`██     ██ ██     ██      ██ ██████  ██████  
+██     ██ ██     ██      ██ ██   ██      ██ 
+██  █  ██ ██  █  ██      ██ ██   ██   ▄███  
+██ ███ ██ ██ ███ ██ ██   ██ ██   ██   ▀▀    
+ ███ ███   ███ ███   █████  ██████    ██`);
+
+  const PRIDE_MONTH = 5;
+  const currentMonth = new Date().getMonth();
+
+  if (currentMonth === PRIDE_MONTH) {
+    document.body.classList.add("pride");
+  }
+
+  document.querySelector("h1")?.addEventListener("click", () => {
+    document.body.classList.toggle("pride");
+  });
+</script>
+
+<style lang="scss">
+  html {
+    min-height: 100%;
+    font-family: "Raleway", sans-serif;
+    font-size: 62.5%;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+    background: url("../assets/background.jpg") no-repeat left center;
+    background-size: cover;
+    min-height: 100vh;
+
+    &:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .pride {
+    &::before {
+      background: linear-gradient(
+        180deg,
+        rgba(254, 0, 0, 0.7) 0%,
+        rgba(255, 99, 0, 0.7) 20%,
+        rgba(255, 255, 1, 0.7) 40%,
+        rgba(0, 128, 1, 0.7) 60%,
+        rgba(70, 0, 255, 0.7) 80%,
+        rgba(131, 1, 137, 0.7) 100%
+      );
+    }
+
+    p {
+      span {
+        background: linear-gradient(
+          45deg,
+          #fe0000 0%,
+          #ff6300 20%,
+          #ffff01 40%,
+          #008001 60%,
+          #4600ff 80%,
+          #830189 100%
+        );
+        background-size: 100%;
+        background-repeat: repeat;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      &:hover {
+        span {
+          -webkit-text-fill-color: black;
+
+          a {
+            -webkit-text-fill-color: yellow;
+          }
+        }
+      }
+
+      span a {
+        -webkit-text-fill-color: black;
+      }
+    }
+  }
+</style>
